@@ -1,0 +1,26 @@
+services:
+  # apache front server
+  apache:
+    container_name: ApacheFront
+    image: apache_front:1.0.0
+    build:
+      context: ./front
+      dockerfile: dockerfile
+    ports:
+      - 8081:80
+
+  # python server
+  python:
+    container_name: PythonBack
+    image: python_back:1.0.0
+    build:
+      context: ./api
+      dockerfile: dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - database.db:/var/app/database.db
+
+
+volumes:
+  database.db: {}

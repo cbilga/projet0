@@ -1,0 +1,47 @@
+name: Push and test
+
+on: 
+  branch: main
+  
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    #strategy:
+    #  matrix:
+    #    python-version: [3.7, 3.8, 3.9, 3.10, 3.11]
+    env:
+      IS_BETA: false
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+      #  with:
+      #    python-version: '3.x'
+      #- name: Generate documentation
+      #  run: |
+      #    sh scripts/mkdoc.sh
+      - name: Run tests
+        run: |
+          python3 -m unittest discover -s tests
+      - name: Test check
+        run: |
+          echo ${{ env.IS_BETA }}
+
+      #- run: pip install ruff
+      #- run: | 
+      #    ruff check .
+      #- uses: stefanzweifel/git-auto-commit-action@v4
+      #  with:
+      #    commit_message: 'style fixes by ruff'
+      #    branch: main
+      #- name: Lint with Ruff
+      #  run: |
+      #    pip install ruff
+      #    ruff check --output-format=github .
+      #    continue-on-error: false
