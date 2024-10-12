@@ -66,7 +66,7 @@ def read_version(database):
         try:
             cur.execute("DROP TABLE version;")
             conn.commit()
-        except sqlite3.Error as errdrop:
+        except sqlite3.Error:
             pass
         finally:
             # creation
@@ -79,7 +79,7 @@ def read_version(database):
                 print('abandon')
                 sys.Exit(1)
             finally:
-                print(f"base créée")
+                print("base créée")
                 if cur:
                     cur.close()
                 if conn:
