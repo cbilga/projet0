@@ -2,6 +2,8 @@ FROM ubuntu/apache2
 
 COPY . /var/www/html
 
+RUN echo "APIUrl = 'http://localhost:3000'" > /var/www/html/assets/scripts/api.js
+
 EXPOSE 80
 
 CMD ["apache2-foreground"]

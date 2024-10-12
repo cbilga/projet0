@@ -6,9 +6,23 @@ WORKDIR /app
 
 #RUN pip install -r requirements.txt
 
-COPY . .
+ARG app_name=projet0
+ARG app_port=3000
+ARG app_version=1.0
+ARG bdd_version=1
 
-EXPOSE 3000
+COPY database /var/${app_name}/
+
+RUN echo "[DATABASE]\ndirectory = /var/${app_name}/\nversion = ${bdd_version}\n\n[SERVER]\nport = ${app_port}" > config.conf
+
+
+RUN echo "[DEFAULT]\nconfig_file = config.conf\nrelease = ${app_version}}" > config.ini
+
+COPY server.py .
+COPY config.ini .
+COPY sql .
+
+EXPOSE ${app_port}
 
 #TODO check config.ini and config.conf
 
