@@ -391,7 +391,7 @@ class MyRequestHandler(BaseHTTPRequestHandler):
         if len(path_parts) < 1:
             self.send_error(404)
             return
-        id = int(path_parts[1])
+        #id = int(path_parts[1])
         content_length = int(self.headers['Content-Length'])
         data = json.loads(self.rfile.read(content_length).decode('utf-8'))
         if update(self.database, data):
