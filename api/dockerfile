@@ -24,6 +24,4 @@ COPY sql .
 
 EXPOSE ${app_port}
 
-#TODO check config.ini and config.conf
-
 CMD ["python3", "server.py"]
