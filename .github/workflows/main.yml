@@ -34,9 +34,18 @@ jobs:
       - run: pip install ruff
       - run: | 
           ruff check --fix ./api/
-      - name: Push to main if all succesful
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: 'Development merge'
-          tagging_message: 'v1.0.0'
-          branch: main
+
+      - name: Push if succesful
+        run:
+          git config user.name cbilga
+          git config user.email cosmin.bilga@gmail.com
+          git switch main
+          git merge development
+          git commit -m "auto merge"
+          git push
+      #- name: Push to main if all succesful
+      #  uses: stefanzweifel/git-auto-commit-action@v5
+      #  with:
+      #    commit_message: 'Development merge'
+      #    tagging_message: 'v1.0.0'
+      #    branch: main
