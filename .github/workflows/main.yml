@@ -40,4 +40,4 @@ jobs:
           commit_message: 'Development merge'
           tagging_message: 'v1.0.0'
           push_options: '--force'
-          branch: main
+          branch: origin/main
