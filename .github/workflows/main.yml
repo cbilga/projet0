@@ -36,6 +36,7 @@ jobs:
           ruff check --fix ./api/
 
       - name: Push if succesful
+        uses: actions/checkout@v3
         run:
           git config user.name cbilga
           git config user.email cosmin.bilga@gmail.com
