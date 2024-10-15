@@ -1,4 +1,5 @@
 # ProjetO
+
 Application de gestion de projets
 
 ## Résumé des fonctionnalités:
@@ -17,7 +18,7 @@ Le projet est organisé de la manière suivante :
   - **sql**: Scripts SQL pour la création et la mise à jour de la base de données.
 - **front**: Contient le frontend de l'application, développé avec HTML, CSS et JavaScript
 
-# Installation et lancement
+# Installation et lancement**/__pycache__/
 ## Prérequis:
 
 Python  
